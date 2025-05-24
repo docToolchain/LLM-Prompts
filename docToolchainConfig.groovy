@@ -1,8 +1,8 @@
 /*
- * docToolchain Configuration
+ * docToolchain Configuration for LLM-Prompts
  * 
- * This configuration file is used to configure docToolchain for the LLM-Prompts project.
- * It defines the structure, output formats, and various settings for generating documentation.
+ * This configuration enables professional documentation generation using generateSite
+ * for creating a modern, searchable documentation website with GitHub Pages deployment.
  */
 
 // Output path for generated documents
@@ -10,9 +10,6 @@ outputPath = 'build/docs'
 
 // Path where docToolchain will search for input files
 inputPath = 'src/docs'
-
-// Main AsciiDoc file that includes all other files
-mainConfigFile = 'docToolchainConfig.groovy'
 
 // Files to process and output formats
 inputFiles = [
@@ -29,15 +26,35 @@ asciidoctorConfigFile = [
     'toclevels': '3',
     'sectnums': '',
     'icons': 'font',
-    'imagesdir': 'images'
+    'imagesdir': 'images',
+    'site-title': 'LLM Prompts for Software Architecture',
+    'site-description': 'A comprehensive collection of LLM prompts for software architecture documentation'
 ]
 
-confluence = [
-    // Confluence configuration (if needed later)
-    // baseUrl: 'https://yourcompany.atlassian.net',
-    // spaceKey: 'SPACE',
-    // username: System.getenv('CONFLUENCE_USERNAME'),
-    // password: System.getenv('CONFLUENCE_API_TOKEN')
+// Site generation configuration for generateSite
+site = [
+    // Site-specific configuration for better documentation website
+    name: 'LLM Prompts for Software Architecture',
+    description: 'A comprehensive collection of LLM prompts for software architecture documentation',
+    baseUrl: 'https://doctoolchain.github.io/LLM-Prompts/',
+    author: 'docToolchain Community',
+    
+    // Theme and styling
+    theme: 'default'
+]
+
+// Microsite configuration (used by generateSite)
+microsite = [
+    // Enable microsite generation
+    enabled: true,
+    
+    // Microsite-specific settings
+    siteName: 'LLM Architecture Prompts',
+    siteDescription: 'Professional LLM prompts for software architecture documentation',
+    baseUrl: 'https://doctoolchain.github.io/LLM-Prompts/',
+    
+    // Output directory for microsite
+    outputDir: 'build/microsite'
 ]
 
 // GitHub Pages configuration
@@ -45,7 +62,7 @@ githubPages = [
     // Enable for GitHub Pages deployment
     enabled: true,
     branch: 'gh-pages',
-    folder: 'build/docs/html5'
+    folder: 'build/microsite'
 ]
 
 // PDF configuration
@@ -54,20 +71,17 @@ pdfTheme = 'basic'
 // Task dependencies and settings
 taskGroups = [
     'doctoolchain': [
-        'generateHTML',
-        'generatePDF',
-        'generateSite'
+        'generateSite',
+        'generatePDF'
     ]
 ]
 
-// Additional PlantUML configuration for diagrams
+// PlantUML configuration for diagrams
 plantuml = [
-    // PlantUML settings if needed
     format: 'svg'
 ]
 
 // Kroki configuration for diagram generation
 kroki = [
-    // Use kroki.io service for diagram generation
     serverUrl: 'https://kroki.io'
 ]
