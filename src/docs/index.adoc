@@ -1,0 +1,103 @@
+= LLM Prompts for Software Architecture
+:doctype: book
+:toc: left
+:toclevels: 3
+:sectnums:
+:icons: font
+:source-highlighter: highlight.js
+:imagesdir: images
+:author: docToolchain Community
+:revnumber: 1.0
+:revdate: {docdate}
+:description: A comprehensive collection of LLM prompts for software architecture documentation and analysis
+:site-title: LLM Prompts for Software Architecture
+:site-description: Professional LLM prompts for creating high-quality architecture documentation
+
+[abstract]
+== Abstract
+
+This collection provides carefully crafted LLM prompts designed to assist software architects, developers, and technical writers in creating high-quality architecture documentation. Each prompt is designed to work with modern Large Language Models to generate structured, comprehensive documentation following established frameworks like arc42.
+
+== Introduction
+
+Software architecture documentation is crucial for project success, but creating comprehensive, consistent documentation can be time-consuming and challenging. Large Language Models (LLMs) like Claude, ChatGPT, or others can significantly accelerate this process when provided with well-structured prompts.
+
+This collection contains proven prompts for:
+
+* Architecture Communication Canvas creation
+* Architecture Decision Records (ADRs)
+* Quality scenarios and requirements
+* Risk assessment matrices
+* Technical debt tracking
+* arc42 chapter generation
+
+Each prompt is designed to guide the LLM through a structured conversation, ensuring all necessary information is gathered and properly documented.
+
+== How to Use These Prompts
+
+=== General Guidelines
+
+1. **Start with Context**: Always provide the LLM with sufficient context about your project, technology stack, and constraints.
+
+2. **Iterate and Refine**: These prompts are designed for interactive sessions. Don't expect perfect results on the first try.
+
+3. **Validate Results**: Always review and validate the generated content with your team and stakeholders.
+
+4. **Customize**: Adapt the prompts to your specific needs, industry, or organizational standards.
+
+=== Integration with Tools
+
+These prompts work best when integrated with documentation tools like:
+
+* **docToolchain**: For generating professional documentation from AsciiDoc
+* **Confluence**: For collaborative documentation platforms
+* **Git repositories**: For version-controlled documentation-as-code approaches
+
+== Prompt Collection
+
+include::prompts/architecture-communication-canvas.adoc[]
+
+include::prompts/architecture-decision-record.adoc[]
+
+include::prompts/quality-scenarios-builder.adoc[]
+
+include::prompts/risk-assessment-matrix.adoc[]
+
+include::prompts/technical-debt-tracker.adoc[]
+
+include::prompts/arc42-chapter-generator.adoc[]
+
+== Contributing
+
+We welcome contributions to this prompt collection! If you have:
+
+* Improvements to existing prompts
+* New prompts for architecture documentation
+* Better examples or use cases
+* Bug fixes or clarifications
+
+Please submit a pull request or open an issue on our GitHub repository.
+
+== License
+
+This collection is open source and available under the MIT License. Feel free to use, modify, and distribute these prompts in your projects.
+
+== Appendix
+
+=== Additional Resources
+
+* https://arc42.org/[arc42 Architecture Template]
+* https://doctoolchain.org/[docToolchain Documentation]
+* https://adr.github.io/[Architecture Decision Records]
+* https://canvas.arc42.org/[Architecture Communication Canvas]
+
+=== Version History
+
+[cols="1,2,3"]
+|===
+|Version |Date |Changes
+
+|1.0
+|{docdate}
+|Initial release with core prompt collection
+|===
