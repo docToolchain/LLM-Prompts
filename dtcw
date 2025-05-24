@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+#
+# docToolchain wrapper script
+#
+# This script will download and execute docToolchain.
+# It acts as a thin wrapper to provide a unified interface.
+#
+
+# Determine OS and architecture
+case "$(uname -s)" in
+    Linux*)     os=linux;;
+    Darwin*)    os=macos;;
+    CYGWIN*)    os=windows;;
+    MINGW*)     os=windows;;
+    *)          os=unknown;;
+esac
+
+case "$(uname -m)" in
+    x86_64)     arch=x64;;
+    arm64|aarch64) arch=arm64;;
+    *)          arch=x64;;
+esac
+
+# Default version
+VERSION="${DTC_VERSION:-2.3.1}"
+
+# Installation directory
+INSTALL_DIR="${HOME}/.doctoolchain"
+
+# Check if docToolchain is installed
+if [ ! -f "${INSTALL_DIR}/bin/doctoolchain" ]; then
+    echo "docToolchain not found. Installing version ${VERSION}..."
+    
+    # Create installation directory
+    mkdir -p "${INSTALL_DIR}"
+    
+    # Download and extract
+    if command -v curl >/dev/null 2>&1; then
+        curl -Lo "${INSTALL_DIR}/doctoolchain.tar.gz" \
+            "https://github.com/docToolchain/docToolchain/releases/download/v${VERSION}/doctoolchain-${VERSION}.tar.gz"
+    elif command -v wget >/dev/null 2>&1; then
+        wget -O "${INSTALL_DIR}/doctoolchain.tar.gz" \
+            "https://github.com/docToolchain/docToolchain/releases/download/v${VERSION}/doctoolchain-${VERSION}.tar.gz"
+    else
+        echo "Error: Neither curl nor wget found. Please install one of them."
+        exit 1
+    fi
+    
+    # Extract
+    tar -xzf "${INSTALL_DIR}/doctoolchain.tar.gz" -C "${INSTALL_DIR}" --strip-components=1
+    rm "${INSTALL_DIR}/doctoolchain.tar.gz"
+    
+    echo "docToolchain ${VERSION} installed successfully."
+fi
+
+# Execute docToolchain
+exec "${INSTALL_DIR}/bin/doctoolchain" "$@"
