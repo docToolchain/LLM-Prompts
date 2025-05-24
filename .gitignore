@@ -1,0 +1,31 @@
+# docToolchain build outputs
+build/
+
+# Local docToolchain installation
+.doctoolchain/
+
+# Generated diagrams (will be regenerated)
+src/docs/images/generated/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Log files
+*.log
+
+# Java files (if any)
+*.jar
+*.war
+*.class
+target/
