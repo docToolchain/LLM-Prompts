@@ -1,0 +1,161 @@
+- High impact on development velocity
+- High risk if not addressed
+- Relatively low effort to resolve
+- Affects critical business functions
+
+**Medium Priority (Plan for Resolution)**:
+- Moderate impact on development
+- Some risk if not addressed
+- Reasonable effort to resolve
+- Affects non-critical functions
+
+**Low Priority (Monitor)**:
+- Low impact on development
+- Low risk if not addressed
+- High effort to resolve
+- Minimal business impact
+
+# Step 4: Remediation Planning
+For each debt item, we'll create:
+
+**Remediation Strategy**:
+- **Quick Fix**: Temporary solution to reduce immediate impact
+- **Proper Fix**: Complete resolution of the debt
+- **Refactor**: Larger restructuring effort
+- **Replace**: Complete replacement of the problematic component
+
+**Remediation Plan**:
+- Specific steps to resolve the debt
+- Prerequisites and dependencies
+- Testing requirements
+- Risk mitigation during remediation
+
+**Timeline and Ownership**:
+- Target resolution date
+- Assigned owner/team
+- Dependencies on other work
+- Milestone integration
+
+# Step 5: Documentation Format
+Generate the technical debt tracking in this AsciiDoc format:
+
+```
+== Technical Debt Tracking
+
+=== Debt Summary
+[cols="1,2,1,1,1,1"]
+|===
+|Debt ID |Title |Category |Priority Score |Effort |Status
+
+|TD-001
+|[Debt Title]
+|[Category]
+|[Score]
+|[Effort Level]
+|[Status]
+|===
+
+=== Detailed Debt Analysis
+
+==== TD-001: [Debt Title]
+
+**Category**: [Code/Architecture/Design/Documentation/Test/Infrastructure]
+**Current Status**: [Identified/Analyzed/Planned/In Progress/Resolved]
+**Priority Score**: [Total Score]
+
+**Description**: [Detailed description of the technical debt]
+
+**Location**: [Where in the system this debt exists]
+
+**Root Cause**: [Why this debt was created]
+
+**Impact Assessment**:
+- **Development Velocity**: [How it slows down development]
+- **Maintenance Cost**: [Ongoing cost of the debt]
+- **Quality Risk**: [Risk to system quality]
+- **Business Impact**: [Effect on business operations]
+
+**Effort Analysis**:
+- **Estimated Effort**: [Time required]
+- **Complexity**: [Low/Medium/High/Very High]
+- **Skills Required**: [What expertise is needed]
+- **Dependencies**: [What other work must be done first]
+
+**Priority Scoring**:
+- **Impact Score**: [1-5] - [Justification]
+- **Effort Score**: [1-5] - [Justification - lower effort = higher score]
+- **Risk Score**: [1-5] - [Justification]
+- **Business Value Score**: [1-5] - [Justification]
+- **Total Priority Score**: [Sum]
+
+**Remediation Plan**:
+- **Strategy**: [Quick Fix/Proper Fix/Refactor/Replace]
+- **Steps**:
+  1. [Step 1]
+  2. [Step 2]
+  3. [Step 3]
+- **Prerequisites**: [What needs to be done first]
+- **Testing Approach**: [How to verify the fix]
+- **Risk Mitigation**: [How to reduce risks during remediation]
+
+**Timeline and Ownership**:
+- **Owner**: [Responsible person/team]
+- **Target Date**: [When to resolve]
+- **Dependencies**: [Other work that affects timeline]
+- **Milestone**: [Project milestone integration]
+
+**Related Items**:
+- **Architecture Decisions**: [Related ADRs]
+- **Quality Scenarios**: [Related quality requirements]
+- **Risks**: [Related risk items]
+
+**Review History**:
+- [Date]: [Review notes and status updates]
+```
+
+# Step 6: Debt Metrics and Reporting
+We'll also track:
+
+**Debt Metrics**:
+- Total debt items by category
+- Average time to resolution
+- Debt creation rate vs. resolution rate
+- Impact on development velocity
+- Cost of debt (estimated)
+
+**Regular Reviews**:
+- Weekly debt triage meetings
+- Monthly debt trend analysis
+- Quarterly debt strategy reviews
+- Annual debt portfolio assessment
+
+Let's start by discussing your project context and identifying the most significant technical debt categories in your system.
+----
+
+=== Usage Instructions
+
+1. **Regular Assessment**: Technical debt should be continuously identified and tracked
+2. **Team Involvement**: Include developers, architects, and product owners
+3. **Balanced Approach**: Don't try to fix everything at once
+4. **Integration**: Link debt items to sprints and project planning
+5. **Metrics Tracking**: Monitor debt trends over time
+
+=== Expected Output
+
+The prompt generates:
+
+* Comprehensive technical debt inventory
+* Prioritized remediation roadmap
+* Detailed analysis and effort estimates
+* Integration with project planning
+* Metrics for tracking debt trends
+
+=== Integration with Architecture Documentation
+
+Technical debt tracking should:
+
+* Inform architecture decisions (ADRs)
+* Connect to quality scenarios and requirements
+* Support risk assessment activities
+* Guide refactoring and improvement efforts
+* Influence technology and design choices
