@@ -1,0 +1,250 @@
+= LLM Prompts for Architecture Documentation
+:toc: left
+:toclevels: 3
+:sectanchors:
+:sectlinks:
+:sectnums:
+:icons: font
+:source-highlighter: highlight.js
+:imagesdir: images
+
+ifndef::env-site[:imagesdir: ./images]
+
+[.lead]
+A comprehensive collection of carefully crafted prompts to streamline software architecture documentation using arc42, docToolchain, and proven methodologies. These prompts are designed to work with various LLMs (Claude, ChatGPT, etc.) to enhance your architecture documentation workflow.
+
+== 🎯 Quick Navigation
+
+[.row]
+--
+[.col-md-6]
+****
+*🚀 Getting Started*
+
+* <<core-tools,Core Architecture Tools>>
+* <<comprehensive-docs,Comprehensive Documentation>>
+* <<workflow,Recommended Workflow>>
+* <<customization,Customization Guide>>
+****
+
+[.col-md-6]
+****
+*📚 Advanced Topics*
+
+* <<risk-management,Risk & Debt Management>>
+* <<specialized-prompts,Specialized Prompts>>
+* <<integration,docToolchain Integration>>
+* <<community,Community & Contributing>>
+****
+--
+
+== 🛠️ Core Architecture Tools [[core-tools]]
+
+These prompts provide the foundation for effective architecture communication and decision-making.
+
+[cols="1,3,1,1"]
+|===
+|Prompt |Description |Complexity |Output Format
+
+|link:Prompts/20-ACC.html[Architecture Communication Canvas]
+|Creates a visual canvas summarizing key architecture aspects in one page. Perfect for stakeholder communication and project overview.
+|🟢 Beginner
+|AsciiDoc + HTML Table
+
+|link:Prompts/30-ADR.html[Architecture Decision Record]
+|Structured approach to documenting architecture decisions with Pugh Matrix evaluation for objective analysis and traceability.
+|🟡 Intermediate
+|AsciiDoc Document
+
+|link:Prompts/80-Stakeholder-Analysis.html[Stakeholder Analysis]
+|Comprehensive stakeholder identification and analysis for better communication strategies and project success.
+|🟢 Beginner
+|AsciiDoc Register
+|===
+
+== 📖 Comprehensive Documentation [[comprehensive-docs]]
+
+Advanced prompts for creating complete architecture documentation following established frameworks.
+
+[cols="1,3,1,1"]
+|===
+|Prompt |Description |Complexity |Output Format
+
+|link:Prompts/40-arc42-Chapter-Generator.html[arc42 Chapter Generator]
+|Step-by-step creation of complete arc42 documentation with quality-driven approach and architectural decision support.
+|🔴 Advanced
+|Multiple AsciiDoc Files
+
+|link:Prompts/50-Quality-Scenarios-Builder.html[Quality Scenarios Builder]
+|Create testable, specific quality requirements using structured scenarios for measurable architecture goals and validation.
+|🟡 Intermediate
+|AsciiDoc Quality Scenarios
+
+|link:Prompts/100-Solution-Strategy-Planner.html[Solution Strategy Planner]
+|Develop comprehensive solution strategies based on quality goals following arc42 Chapter 4 principles and best practices.
+|🔴 Advanced
+|AsciiDoc Strategy Document
+
+|link:Prompts/110-Deployment-View-Creator.html[Deployment View Creator]
+|Design and document comprehensive system deployment architectures following arc42 Chapter 7 principles.
+|🔴 Advanced
+|AsciiDoc Deployment Documentation
+|===
+
+== ⚠️ Risk & Debt Management [[risk-management]]
+
+Specialized prompts for identifying, assessing, and managing architecture risks and technical debt.
+
+[cols="1,3,1,1"]
+|===
+|Prompt |Description |Complexity |Output Format
+
+|link:Prompts/60-Risk-Assessment-Matrix.html[Risk Assessment Matrix]
+|Systematic identification and assessment of architecture risks with practical mitigation strategies and monitoring plans.
+|🟡 Intermediate
+|AsciiDoc Risk Register
+
+|link:Prompts/70-Technical-Debt-Tracker.html[Technical Debt Tracker]
+|Comprehensive technical debt identification, prioritization, and management for long-term system health and maintainability.
+|🟡 Intermediate
+|AsciiDoc Debt Register
+|===
+
+== 🧩 Specialized Prompts [[specialized-prompts]]
+
+Domain-specific prompts for particular aspects of architecture documentation and visualization.
+
+[cols="1,3,1,1"]
+|===
+|Prompt |Description |Complexity |Output Format
+
+|link:Prompts/90-Context-Diagram-Generator.html[Context Diagram Generator]
+|Generate professional C4 context diagrams with PlantUML for clear system boundary visualization and external dependencies.
+|🟡 Intermediate
+|AsciiDoc + C4-PlantUML
+|===
+
+== 🔄 Recommended Workflow [[workflow]]
+
+Follow this proven sequence to maximize the effectiveness of your architecture documentation:
+
+```mermaid
+graph LR
+    A[1. Canvas] --> B[2. arc42]
+    B --> C[3. Quality]
+    C --> D[4. Decisions] 
+    D --> E[5. Risks]
+    E --> F[6. Debt]
+    
+    A -.->|"Get big picture"| A1[Architecture Communication Canvas]
+    B -.->|"Create comprehensive docs"| B1[arc42 Chapter Generator]
+    C -.->|"Define testable requirements"| C1[Quality Scenarios Builder]
+    D -.->|"Document key decisions"| D1[Architecture Decision Records]
+    E -.->|"Identify and mitigate"| E1[Risk Assessment Matrix]
+    F -.->|"Manage code health"| F1[Technical Debt Tracker]
+```
+
+=== Step-by-Step Guide
+
+. **Start with Architecture Communication Canvas** - Get the big picture and identify key stakeholders, core functions, and value proposition
+. **Use arc42 Chapter Generator** - Create comprehensive documentation structure following proven methodology
+. **Build Quality Scenarios** - Define testable quality requirements with specific success criteria
+. **Create Architecture Decision Records** - Document and justify key architectural decisions with structured evaluation
+. **Assess Risks** - Identify potential problems early and develop mitigation strategies
+. **Track Technical Debt** - Manage long-term system health and plan refactoring activities
+
+== 🔧 docToolchain Integration [[integration]]
+
+These prompts are designed to work seamlessly with https://doctoolchain.org[docToolchain] workflows:
+
+=== Output Compatibility
+* **AsciiDoc Format**: All outputs are in AsciiDoc format for seamless integration
+* **PlantUML Diagrams**: Diagrams use PlantUML/Kroki for automatic rendering
+* **arc42 Structure**: Compatible with standard arc42 template organization
+* **Version Control**: Documentation can be managed with Git like source code
+
+=== Integration Workflow
+[source,bash]
+----
+# Generate HTML documentation
+./dtcw generateHTML
+
+# Generate PDF documentation  
+./dtcw generatePDF
+
+# Publish to Confluence
+./dtcw publishToConfluence
+
+# Generate complete site
+./dtcw generateSite
+----
+
+=== Configuration Tips
+* Use the provided `docToolchainConfig.groovy` as a starting point
+* Customize output paths and formats based on your needs
+* Integrate with CI/CD pipelines for automatic documentation updates
+* Consider using Confluence publishing for stakeholder access
+
+== 🎨 Customization Guide [[customization]]
+
+These prompts are designed to be highly customizable for your specific context:
+
+=== Adaptation Strategies
+. **Domain-Specific Terminology**: Replace generic terms with your industry-specific language
+. **Organizational Standards**: Adapt output formats to match your documentation standards  
+. **Tool Integration**: Modify prompts to work with your existing toolchain
+. **Team Workflows**: Adjust collaborative aspects to fit your team processes
+
+=== Example Customizations
+* **Microservices Architecture**: Add service-specific sections to arc42 documentation
+* **Data Architecture**: Include data flow and governance aspects in quality scenarios
+* **Cloud-Native**: Adapt deployment views for containerized environments
+* **Regulatory Compliance**: Add compliance-specific sections to risk assessments
+
+== 🤝 Community & Contributing [[community]]
+
+=== How to Contribute
+We welcome contributions from the community! Here's how you can help:
+
+. **Test Prompts**: Ensure they work across different LLMs and domains
+. **Share Examples**: Provide real-world examples of prompt usage
+. **Suggest Improvements**: Open issues for enhancements or new prompt ideas
+. **Documentation**: Help improve clarity and usability of existing prompts
+
+=== Community Guidelines
+* Test your prompts thoroughly before submitting
+* Follow the established format and structure
+* Include clear usage examples and expected outputs
+* Consider integration with existing prompts in the workflow
+
+=== Getting Help
+* **GitHub Issues**: Report bugs or request features
+* **Discussions**: Ask questions and share experiences
+* **Documentation**: Check the comprehensive guides and examples
+
+== 📊 Success Metrics
+
+=== Documentation Quality Indicators
+* **Completeness**: Coverage of all relevant architecture aspects
+* **Consistency**: Uniform structure and terminology across documents
+* **Traceability**: Clear links between decisions, requirements, and implementations
+* **Maintainability**: Easy to update and evolve over time
+
+=== Process Improvement Metrics  
+* **Time to Document**: Reduced effort for creating architecture documentation
+* **Stakeholder Understanding**: Improved clarity and communication effectiveness
+* **Decision Speed**: Faster architectural decision-making with structured evaluation
+* **Risk Mitigation**: Earlier identification and handling of potential issues
+
+== 📚 Additional Resources
+
+* https://arc42.org[arc42 Template] - The foundation methodology
+* https://doctoolchain.org[docToolchain] - Documentation automation toolchain  
+* https://canvas.arc42.org[Architecture Communication Canvas] by Gernot Starke
+* https://plantuml.com[PlantUML] for diagram creation
+* https://kroki.io[Kroki] for diagram generation services
+* https://adr.github.io/[ADR GitHub Organization] for decision record examples
+
+---
+
+_These prompts are maintained by the docToolchain community. For questions or suggestions, please open an issue or contribute directly to the project._
