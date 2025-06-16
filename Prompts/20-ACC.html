@@ -9,7 +9,7 @@
     <meta content="jbake" name="generator">
     <meta content="INDEX, FOLLOW" name="ROBOTS">
 
-    <title>AC Canvas</title>
+    <title>Architecture Communication Canvas</title>
     <meta content="docToolchain" property="og:title">
     <meta content="build your dev docs the easy way..." property="og:description">
     <meta content="website" property="og:type">
@@ -213,11 +213,15 @@
     <li class="nav-item mr-4 mb-2 mb-lg-0"><!--img src="../images/status.png" alt="status" width="16" height="16" onerror="this.style.display='none'"--></li>
 
             <li class="nav-item mr-4 mb-2 mb-lg-0">
+                <a class="nav-link active" href="../Prompts/10-Intro.html"><span>Prompts</span></a>
+            </li>
+
+            <li class="nav-item mr-4 mb-2 mb-lg-0">
                 <a class="nav-link " href="../descriptions/Context-Diagram-Generator-Description.html"><span>descriptions</span></a>
             </li>
 
             <li class="nav-item mr-4 mb-2 mb-lg-0">
-                <a class="nav-link active" href="../Prompts/10-Intro.html"><span>Prompts</span></a>
+                <a class="nav-link " href="../examples/architecture-communication-canvas-example.html"><span>examples</span></a>
             </li>
 
         </ul>
@@ -235,7 +239,7 @@
 	<div class="td-main">
 		<div class="row flex-xl-nowrap">
 			<div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
-				<div class="td-sidebar__inner" id="td-sidebar-menu" >
+				<div class="td-sidebar__inner" id="td-sidebar-menu">
 					
 
         <form class="td-sidebar__search d-flex align-items-center d-lg-none" action="../search.html">
@@ -268,7 +272,7 @@
                             </li>
                             <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child">
                                 <a class="align-left pl-0 pr-2 pt-2 td-sidebar-link td-sidebar-link__section active"
-                                   href="../Prompts/20-ACC.html" title="AC Canvas">AC Canvas</a>
+                                   href="../Prompts/20-ACC.html" title="Architecture Communication Canvas">Architecture Communication Canvas</a>
                                 
                             </li>
                             <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child">
@@ -337,7 +341,7 @@
            target="_blank"><i class="fa fa-edit fa-fw"></i> Improve this doc</a>
 
 
-        <a href="##issue-url##?title=Docs%3A+Feedback+for+%27AC+Canvas%27&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23page:%20##git-repo-url##/Prompts/20-ACC.adoc%0A%23branch:%20main" target="_blank"><i
+        <a href="##issue-url##?title=Docs%3A+Feedback+for+%27Architecture+Communication+Canvas%27&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23page:%20##git-repo-url##/Prompts/20-ACC.adoc%0A%23branch:%20main" target="_blank"><i
                 class="fab fa-github fa-fw"></i> Create an issue</a>
 
         
@@ -346,8 +350,25 @@
 
         <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#_architecture_communication_canvas">Architecture Communication Canvas</a>
 <ul class="sectlevel1">
-<li><a href="#_architecture_communication_canvas">Architecture Communication Canvas</a></li>
+<li><a href="#_purpose">🎯 Purpose</a></li>
+<li><a href="#_when_to_use">📋 When to Use</a></li>
+<li><a href="#_️_the_prompt">🛠️ The Prompt</a></li>
+<li><a href="#_expected_output">📊 Expected Output</a></li>
+<li><a href="#_example_usage">💡 Example Usage</a></li>
+<li><a href="#_integration_with_other_prompts">🔗 Integration with Other Prompts</a></li>
+<li><a href="#_customization_tips">🎨 Customization Tips</a>
+<ul class="sectlevel2">
+<li><a href="#_for_different_domains">For Different Domains</a></li>
+<li><a href="#_for_different_audiences">For Different Audiences</a></li>
+</ul>
+</li>
+<li><a href="#_success_metrics">📈 Success Metrics</a></li>
+<li><a href="#_next_steps">🚀 Next Steps</a></li>
+</ul>
+</li>
 </ul>
 </div>
 
@@ -370,12 +391,205 @@
     <div class="td-content">
         <p>
             
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="10-Intro.html">
+            <i class="fas fa-brain me-2"></i>LLM Architecture Prompts
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-tools me-1"></i>Core Tools
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="20-ACC.html">
+                            <i class="fas fa-canvas-area me-2"></i>Architecture Communication Canvas
+                        </a></li>
+                        <li><a class="dropdown-item" href="30-ADR.html">
+                            <i class="fas fa-decision-tree me-2"></i>Architecture Decision Record
+                        </a></li>
+                        <li><a class="dropdown-item" href="40-arc42-Chapter-Generator.html">
+                            <i class="fas fa-sitemap me-2"></i>arc42 Chapter Generator
+                        </a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-quality me-1"></i>Quality & Risk
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="50-Quality-Scenarios-Builder.html">
+                            <i class="fas fa-gauge-high me-2"></i>Quality Scenarios Builder
+                        </a></li>
+                        <li><a class="dropdown-item" href="60-Risk-Assessment-Matrix.html">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Risk Assessment Matrix
+                        </a></li>
+                        <li><a class="dropdown-item" href="70-Technical-Debt-Tracker.html">
+                            <i class="fas fa-bug me-2"></i>Technical Debt Tracker
+                        </a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-diagram-project me-1"></i>Specialized
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="80-Stakeholder-Analysis.html">
+                            <i class="fas fa-users-gear me-2"></i>Stakeholder Analysis
+                        </a></li>
+                        <li><a class="dropdown-item" href="90-Context-Diagram-Generator.html">
+                            <i class="fas fa-diagram-project me-2"></i>Context Diagram Generator
+                        </a></li>
+                        <li><a class="dropdown-item" href="100-Solution-Strategy-Planner.html">
+                            <i class="fas fa-lightbulb me-2"></i>Solution Strategy Planner
+                        </a></li>
+                        <li><a class="dropdown-item" href="110-Deployment-View-Creator.html">
+                            <i class="fas fa-server me-2"></i>Deployment View Creator
+                        </a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="999-consolidated-system-prompt.html">
+                        <i class="fas fa-layers me-1"></i>Consolidated Prompt
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/docToolchain/LLM-Prompts" target="_blank">
+                        <i class="fab fa-github me-1"></i>GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+.navbar-brand {
+    font-weight: 600;
+}
+
+.dropdown-item {
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: var(--bs-primary);
+    color: white;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+</style>
+<h1 id="_architecture_communication_canvas" class="sect0">Architecture Communication Canvas</h1>
+<div class="paragraph lead">
+<p>Create a comprehensive one-page visual summary of your architecture that stakeholders can quickly understand and use for decision-making.</p>
+</div>
 <div class="sect1">
-<h2 id="_architecture_communication_canvas">Architecture Communication Canvas</h2>
+<h2 id="_purpose">🎯 Purpose</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The Architecture Communication Canvas helps you distill complex architectural information into a single, visual format that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Communicates Value</strong> - Clearly shows why the system exists and what value it delivers</p>
+</li>
+<li>
+<p><strong>Identifies Stakeholders</strong> - Maps key people and their interests in the system</p>
+</li>
+<li>
+<p><strong>Highlights Core Functions</strong> - Focuses on the most important capabilities</p>
+</li>
+<li>
+<p><strong>Reveals Quality Requirements</strong> - Makes non-functional requirements visible</p>
+</li>
+<li>
+<p><strong>Shows Context</strong> - Illustrates external dependencies and integrations</p>
+</li>
+<li>
+<p><strong>Documents Decisions</strong> - Captures key architectural choices and their rationale</p>
+</li>
+<li>
+<p><strong>Identifies Risks</strong> - Surfaces known problems and missing information</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_when_to_use">📋 When to Use</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 30%;">
+<col style="width: 70%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Scenario</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Application</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Project Kickoff</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get team aligned on architecture vision and scope</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Stakeholder Reviews</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Present architecture overview to executives and business stakeholders</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Architecture Assessment</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Baseline current state before making changes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Team Onboarding</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Help new team members understand the system quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Documentation Reviews</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ensure all key aspects are covered in detailed docs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Risk Planning</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identify areas needing more attention or mitigation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_️_the_prompt">🛠️ The Prompt</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copy and paste this prompt into your preferred LLM interface:</p>
+</div>
+<div class="card border-primary">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <h5 class="mb-0"><i class="fas fa-robot me-2"></i>Architecture Communication Canvas Prompt</h5>
+        <button class="btn btn-light btn-sm" onclick="copyToClipboard('canvas-prompt')" title="Copy to clipboard">
+            <i class="fas fa-copy"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <pre id="canvas-prompt" class="mb-0"><code>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code data-lang="markdown">## Architecture Communication Canvas
+<pre class="prettyprint highlight"><code data-lang="text">## Architecture Communication Canvas
 
 When asked to create an architecture communication canvas, you use the following rules:
 
@@ -558,6 +772,221 @@ https://canvas.arc42.org/[Software Architecture Canvas] by Gernot Starke, Patric
 &lt;/canvas-template&gt;</code></pre>
 </div>
 </div>
+        </code></pre>
+    </div>
+</div>
+
+<script>
+function copyToClipboard(elementId) {
+    const element = document.getElementById(elementId);
+    const text = element.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        // Visual feedback
+        const button = event.target.closest('button');
+        const originalIcon = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i>';
+        button.classList.add('btn-success');
+        button.classList.remove('btn-light');
+
+        setTimeout(() => {
+            button.innerHTML = originalIcon;
+            button.classList.add('btn-light');
+            button.classList.remove('btn-success');
+        }, 2000);
+    });
+}
+</script>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_expected_output">📊 Expected Output</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The prompt will generate an AsciiDoc document containing:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Styled HTML Table</strong> - The canvas layout with proper visual styling</p>
+</li>
+<li>
+<p><strong>Nine Key Sections</strong> - Each addressing a critical architectural aspect</p>
+</li>
+<li>
+<p><strong>Actionable Content</strong> - Specific, concrete information rather than generic statements</p>
+</li>
+<li>
+<p><strong>Stakeholder-Friendly Language</strong> - Accessible to both technical and business audiences</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example_usage">💡 Example Usage</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_integration_with_other_prompts">🔗 Integration with Other Prompts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Architecture Communication Canvas works well as a starting point for other prompts:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Follow-up Prompt</strong></th>
+<th class="tableblock halign-left valign-top"><strong>How It Connects</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="40-arc42-Chapter-Generator.html">arc42 Chapter Generator</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use canvas insights to populate arc42 chapters 1, 2, and 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="30-ADR.html">Architecture Decision Records</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Document the key decisions identified in the canvas</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="60-Risk-Assessment-Matrix.html">Risk Assessment</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Analyze the risks and missing information sections</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="80-Stakeholder-Analysis.html">Stakeholder Analysis</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deep dive into the key stakeholders identified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="50-Quality-Scenarios-Builder.html">Quality Scenarios</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create testable scenarios for quality requirements</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_customization_tips">🎨 Customization Tips</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_for_different_domains">For Different Domains</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Web Applications</strong>: Focus on user experience, scalability, and browser compatibility</p>
+</li>
+<li>
+<p><strong>Enterprise Systems</strong>: Emphasize integration, compliance, and data governance</p>
+</li>
+<li>
+<p><strong>IoT Projects</strong>: Highlight device management, connectivity, and edge computing</p>
+</li>
+<li>
+<p><strong>Microservices</strong>: Show service boundaries, data consistency, and operational complexity</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_for_different_audiences">For Different Audiences</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Executive Stakeholders</strong>: Emphasize value proposition and business risks</p>
+</li>
+<li>
+<p><strong>Product Managers</strong>: Focus on core functions and user-facing quality requirements</p>
+</li>
+<li>
+<p><strong>Development Teams</strong>: Highlight technical decisions and implementation risks</p>
+</li>
+<li>
+<p><strong>Operations Teams</strong>: Emphasize deployment, monitoring, and operational concerns</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_success_metrics">📈 Success Metrics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A good Architecture Communication Canvas should:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>✅ <strong>Fit on one page</strong> when printed or displayed</p>
+</li>
+<li>
+<p>✅ <strong>Be understandable</strong> by stakeholders in 5-10 minutes</p>
+</li>
+<li>
+<p>✅ <strong>Generate questions</strong> and discussions about the architecture</p>
+</li>
+<li>
+<p>✅ <strong>Identify gaps</strong> in current understanding or documentation</p>
+</li>
+<li>
+<p>✅ <strong>Guide priorities</strong> for further architectural work</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_next_steps">🚀 Next Steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After creating your canvas:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Review with Stakeholders</strong> - Get feedback and validate understanding</p>
+</li>
+<li>
+<p><strong>Identify Gaps</strong> - Use missing information section to plan next work</p>
+</li>
+<li>
+<p><strong>Create Detailed Documentation</strong> - Use other prompts to elaborate on canvas sections</p>
+</li>
+<li>
+<p><strong>Update Regularly</strong> - Keep the canvas current as the architecture evolves</p>
+</li>
+<li>
+<p><strong>Share Widely</strong> - Use as a communication tool across the organization</p>
+</li>
+</ol>
+</div>
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card border-secondary">
+            <div class="card-body text-center">
+                <h6 class="card-title">Previous Prompt</h6>
+                <a href="10-Intro.html" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Introduction
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card border-secondary">
+            <div class="card-body text-center">
+                <h6 class="card-title">Next Prompt</h6>
+                <a href="30-ADR.html" class="btn btn-outline-secondary">
+                    Architecture Decision Record<i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 </div>
         </p>
@@ -587,11 +1016,11 @@ https://canvas.arc42.org/[Software Architecture Canvas] by Gernot Starke, Patric
     <button class="feedback--answer feedback--answer-yes">Yes</button>
     <button class="feedback--answer feedback--answer-no">No</button>
     <p class="feedback--response feedback--response-yes">
-        Glad to hear it! Please <a href="##issue-url##?title=Docs%3A+Feedback+for+%27AC+Canvas%27%20%F0%9F%91%8D&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23page:Prompts/20-ACC.adoc">tell us
+        Glad to hear it! Please <a href="##issue-url##?title=Docs%3A+Feedback+for+%27Architecture+Communication+Canvas%27%20%F0%9F%91%8D&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23page:Prompts/20-ACC.adoc">tell us
     how we can improve</a>.
     </p>
     <p class="feedback--response feedback--response-no">
-        Sorry to hear that. Please <a href="##issue-url##?title=Docs%3A+Feedback+for+%27AC+Canvas%27%20%F0%9F%91%8E&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23page:Prompts/20-ACC.adoc">tell
+        Sorry to hear that. Please <a href="##issue-url##?title=Docs%3A+Feedback+for+%27Architecture+Communication+Canvas%27%20%F0%9F%91%8E&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23page:Prompts/20-ACC.adoc">tell
     us how we can improve</a>.
     </p>
 </div>
