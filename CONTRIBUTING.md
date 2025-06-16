@@ -139,7 +139,7 @@ How this works with other prompts or tools
 
 ### Writing Style
 - **Clear and Concise**: Use simple, direct language
-- **Action-Oriented**: Start with verbs (\"Create\", \"Generate\", \"Analyze\")
+- **Action-Oriented**: Start with verbs ("Create", "Generate", "Analyze")
 - **Inclusive**: Use gender-neutral language
 - **Professional**: Maintain professional tone while being approachable
 
