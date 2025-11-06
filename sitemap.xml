@@ -3,107 +3,107 @@
 
     <url>
     	<loc>http://jbake.org/Prompts/20-ACC.html</loc>
-    	<lastmod>2025-06-16</lastmod>
+    	<lastmod>2025-11-06</lastmod>
     </url>
 
     <url>
     	<loc>http://jbake.org/descriptions/Context-Diagram-Generator-Description.html</loc>
-    	<lastmod>2025-06-16</lastmod>
+    	<lastmod>2025-11-06</lastmod>
     </url>
 
     <url>
     	<loc>http://jbake.org/descriptions/Stakeholder-Analysis-Description.html</loc>
-    	<lastmod>2025-06-16</lastmod>
-    </url>
-
-    <url>
-    	<loc>http://jbake.org/examples/quality-scenarios-example.html</loc>
-    	<lastmod>2025-06-16</lastmod>
-    </url>
-
-    <url>
-    	<loc>http://jbake.org/examples/architecture-decision-record-example.html</loc>
-    	<lastmod>2025-06-16</lastmod>
-    </url>
-
-    <url>
-    	<loc>http://jbake.org/examples/architecture-communication-canvas-example.html</loc>
-    	<lastmod>2025-06-16</lastmod>
-    </url>
-
-    <url>
-    	<loc>http://jbake.org/Prompts/50-Quality-Scenarios-Builder.html</loc>
-    	<lastmod>2025-06-16</lastmod>
-    </url>
-
-    <url>
-    	<loc>http://jbake.org/Prompts/90-Context-Diagram-Generator.html</loc>
-    	<lastmod>2025-06-16</lastmod>
-    </url>
-
-    <url>
-    	<loc>http://jbake.org/Prompts/100-Solution-Strategy-Planner.html</loc>
-    	<lastmod>2025-06-16</lastmod>
-    </url>
-
-    <url>
-    	<loc>http://jbake.org/Prompts/60-Risk-Assessment-Matrix.html</loc>
-    	<lastmod>2025-06-16</lastmod>
+    	<lastmod>2025-11-06</lastmod>
     </url>
 
     <url>
     	<loc>http://jbake.org/Prompts/70-Technical-Debt-Tracker.html</loc>
-    	<lastmod>2025-06-16</lastmod>
-    </url>
-
-    <url>
-    	<loc>http://jbake.org/Prompts/110-Deployment-View-Creator.html</loc>
-    	<lastmod>2025-06-16</lastmod>
-    </url>
-
-    <url>
-    	<loc>http://jbake.org/Prompts/30-ADR.html</loc>
-    	<lastmod>2025-06-16</lastmod>
-    </url>
-
-    <url>
-    	<loc>http://jbake.org/Prompts/80-Stakeholder-Analysis.html</loc>
-    	<lastmod>2025-06-16</lastmod>
-    </url>
-
-    <url>
-    	<loc>http://jbake.org/Prompts/999-consolidated-system-prompt.html</loc>
-    	<lastmod>2025-06-16</lastmod>
+    	<lastmod>2025-11-06</lastmod>
     </url>
 
     <url>
     	<loc>http://jbake.org/Prompts/10-Intro.html</loc>
-    	<lastmod>2025-06-16</lastmod>
+    	<lastmod>2025-11-06</lastmod>
     </url>
 
     <url>
     	<loc>http://jbake.org/Prompts/40-arc42-Chapter-Generator.html</loc>
-    	<lastmod>2025-06-16</lastmod>
+    	<lastmod>2025-11-06</lastmod>
     </url>
 
     <url>
-    	<loc>http://jbake.org/descriptions/Deployment-View-Creator-Description.html</loc>
-    	<lastmod>2025-06-16</lastmod>
+    	<loc>http://jbake.org/Prompts/90-Context-Diagram-Generator.html</loc>
+    	<lastmod>2025-11-06</lastmod>
+    </url>
+
+    <url>
+    	<loc>http://jbake.org/Prompts/50-Quality-Scenarios-Builder.html</loc>
+    	<lastmod>2025-11-06</lastmod>
+    </url>
+
+    <url>
+    	<loc>http://jbake.org/Prompts/999-consolidated-system-prompt.html</loc>
+    	<lastmod>2025-11-06</lastmod>
+    </url>
+
+    <url>
+    	<loc>http://jbake.org/Prompts/100-Solution-Strategy-Planner.html</loc>
+    	<lastmod>2025-11-06</lastmod>
+    </url>
+
+    <url>
+    	<loc>http://jbake.org/Prompts/60-Risk-Assessment-Matrix.html</loc>
+    	<lastmod>2025-11-06</lastmod>
+    </url>
+
+    <url>
+    	<loc>http://jbake.org/Prompts/80-Stakeholder-Analysis.html</loc>
+    	<lastmod>2025-11-06</lastmod>
+    </url>
+
+    <url>
+    	<loc>http://jbake.org/Prompts/110-Deployment-View-Creator.html</loc>
+    	<lastmod>2025-11-06</lastmod>
+    </url>
+
+    <url>
+    	<loc>http://jbake.org/Prompts/30-ADR.html</loc>
+    	<lastmod>2025-11-06</lastmod>
     </url>
 
     <url>
     	<loc>http://jbake.org/descriptions/Solution-Strategy-Planner-Description.html</loc>
-    	<lastmod>2025-06-16</lastmod>
+    	<lastmod>2025-11-06</lastmod>
+    </url>
+
+    <url>
+    	<loc>http://jbake.org/descriptions/Deployment-View-Creator-Description.html</loc>
+    	<lastmod>2025-11-06</lastmod>
+    </url>
+
+    <url>
+    	<loc>http://jbake.org/examples/architecture-decision-record-example.html</loc>
+    	<lastmod>2025-11-06</lastmod>
+    </url>
+
+    <url>
+    	<loc>http://jbake.org/examples/quality-scenarios-example.html</loc>
+    	<lastmod>2025-11-06</lastmod>
+    </url>
+
+    <url>
+    	<loc>http://jbake.org/examples/architecture-communication-canvas-example.html</loc>
+    	<lastmod>2025-11-06</lastmod>
     </url>
 
     <url>
     	<loc>http://jbake.org/search.html</loc>
-    	<lastmod>2025-06-16</lastmod>
+    	<lastmod>2025-11-06</lastmod>
     </url>
 
     <url>
     	<loc>http://jbake.org/lunrjsindex.html</loc>
-    	<lastmod>2025-06-16</lastmod>
+    	<lastmod>2025-11-06</lastmod>
     </url>
 
 </urlset>
