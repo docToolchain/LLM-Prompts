@@ -1,0 +1,735 @@
+name: 'mental-model-docs'
+description: 'Build Mental Model Documentation following Peter Naur principles with arc42 structure and docToolchain'
+initial_state: 'initialize'
+
+metadata:
+  domain: 'code'
+  complexity: 'high'
+  bestFor:
+    - 'Creating comprehensive architecture documentation'
+    - 'Extracting implicit knowledge from codebases'
+    - 'Building onboarding documentation'
+    - 'Theory building per Peter Naur'
+  useCases:
+    - 'Legacy system knowledge extraction'
+    - 'Team knowledge transfer'
+    - 'LLM-ready documentation'
+  examples:
+    - 'Document existing architecture'
+    - 'Extract architectural decisions from codebase'
+    - 'Create onboarding path for new developers'
+
+states:
+  initialize:
+    description: 'Initialize documentation structure and analysis'
+    default_instructions: |
+      Set up the documentation infrastructure:
+
+      1. **Set Up docToolchain:**
+         Ensure docToolchain is installed and configured.
+
+         check if dtcw already exists, if not run:
+         ```bash
+         curl -Lo dtcw https://doctoolchain.org/dtcw
+         chmod +x dtcw
+         ./dtcw init
+         ```
+         
+      2. **Create Directory Structure:**
+         ```
+         src/docs/
+           - arc42.adoc              (Master document)
+           - arc42/
+             - 01-introduction.adoc
+             - 03-context.adoc
+             - 04-solution-strategy.adoc
+             - 05-building-blocks.adoc
+             - 08-concepts.adoc
+             - 09-decisions/
+               - README.adoc
+             - 11-risks.adoc
+           - onboarding/
+             - journey-map.adoc
+             - development-workflow.adoc
+             - team-structure.adoc
+             - common-issues.adoc
+           - llm/
+             - knowledge-graph.adoc
+             - antipatterns.adoc
+           - open-questions.adoc
+         ```
+
+      3. **Initialize open-questions.adoc:**
+         Create with AsciiDoc structure for tracking unknowns.
+
+      4. **Scan Repository:**
+         - Identify main technologies (languages, frameworks)
+         - Find existing documentation
+         - Locate configuration files
+         - Map directory structure
+
+      **CRITICAL:** Start documenting open questions immediately.
+      Use this format:
+      ```asciidoc
+      [qanda]
+      Question?::
+      *Kontext:* Why this matters +
+      *Impact:* What's blocked +
+      *Fundstelle:* file:line +
+      *Zu klären mit:* Role +
+      *Annahme:* Current assumption
+      ```
+
+      **Output:** Initial structure created, repository overview documented.
+
+    transitions:
+      - trigger: 'structure_ready'
+        to: 'extract_architecture'
+        transition_reason: 'Ready to analyze architecture'
+
+  extract_architecture:
+    description: 'Extract architectural decisions and quality goals'
+    default_instructions: |
+      Extract the architecture "theory" from the codebase:
+
+      1. **Identify Quality Goals (01-introduction.adoc):**
+         - Search for: performance requirements, scalability needs, security concerns
+         - Look in: README, docs, issue trackers, config files
+         - Document TOP 3 quality goals only
+         - Mark assumptions with [NOTE] boxes
+
+      2. **Extract System Context (03-context.adoc):**
+         - Identify external systems (APIs, databases, services)
+         - Document interfaces and protocols
+         - Create C4 Context diagram inline:
+         ```asciidoc
+         [plantuml, system-context, svg]
+         ----
+         !include <C4/C4_Context>
+         ...
+         ----
+         ```
+
+      3. **Document Architecture Decisions (04-solution-strategy.adoc + 09-decisions/):**
+         ⭐ **CRITICAL:** Extract TOP 5 decisions
+
+         For EACH decision:
+         - Search codebase for WHY (comments, commits, issues)
+         - Identify alternatives (if not found → OPEN QUESTION)
+         - Create ADR in 09-decisions/adr-NNN-title.adoc
+
+         ADR Template:
+         ```asciidoc
+         = ADR-NNN: [Title]
+         :adr-status: accepted|rejected|deprecated
+         :adr-date: YYYY-MM-DD
+
+         == Status
+         {adr-status}, {adr-date}
+
+         == Problem Statement
+         What issue are we solving?
+
+         == Context
+         Background and constraints.
+
+         [NOTE]
+         ====
+         *ANNAHME:* [If context is assumed]
+         *Fundstelle:* `path/to/file:line`
+         ====
+
+         == Decision
+         What we decided to do.
+
+         == Pugh Matrix
+         [cols="3,1,1,1"]
+         |===
+         | Criterion | Baseline | Alt 1 | Alt 2
+
+         | Performance | 0 | +1 | -1
+         | Maintainability | 0 | +2 | 0
+         | Cost | 0 | -1 | +1
+         | *Total* | 0 | +2 | 0
+         |===
+
+         == Consequences
+         - Positive: ...
+         - Negative: ...
+         - Tradeoffs: ...
+
+         == Alternatives Considered
+         1. Alternative 1: Why rejected
+         2. Alternative 2: Why rejected
+
+         .Fundstellen
+         ****
+         * Implementation: `src/main/App.java:42-55`
+         * Tests: `tests/test_app.py:23`
+         * Discussion: Issue #123
+         ****
+         ```
+
+      4. **Update 09-decisions/README.adoc:**
+         Create timeline showing decision evolution.
+
+      **PARALLEL TASK:** Document ALL open questions in open-questions.adoc
+      - Missing rationales
+      - Unclear alternatives
+      - Ambiguous requirements
+
+      **Output:** Architecture foundation documented with traceable decisions.
+
+    transitions:
+      - trigger: 'architecture_extracted'
+        to: 'extract_concepts'
+        transition_reason: 'Core decisions documented, ready for concepts'
+      - trigger: 'need_more_analysis'
+        to: 'extract_architecture'
+        transition_reason: 'More analysis needed'
+        additional_instructions: 'Review open questions, refine analysis strategy'
+
+  extract_concepts:
+    description: 'Extract core concepts and mental models'
+    default_instructions: |
+      Build the Mental Model Map (08-concepts.adoc):
+
+      ⭐ **CRITICAL:** This is Peter Naur's "theory" externalized
+
+      1. **Core Metaphor:**
+         Find the central analogy that explains the system.
+         Example: "Event pipeline", "Request/Response cycle", "Data flow graph"
+
+         Document in AsciiDoc:
+         ```asciidoc
+         == Core Metaphor
+
+         This system is best understood as a *[metaphor]*.
+
+         [plantuml, core-metaphor, svg]
+         ----
+         !include <C4/C4_Component>
+         ...
+         ----
+
+         This metaphor explains:
+         - Why components are structured this way
+         - How data flows through the system
+         - Why certain patterns are used
+         ```
+
+      2. **Must-Understand Concepts (3-5 fundamental concepts):**
+         For EACH concept:
+         ```asciidoc
+         === [Concept Name]
+
+         ==== Why It Matters
+         [Explain impact on system design]
+
+         ==== Impact on Development
+         [How it affects daily work]
+
+         ==== Common Mistakes
+         [What newcomers get wrong]
+
+         [WARNING]
+         ====
+         ❌ *Don't:* [antipattern]
+         ✅ *Do:* [correct approach]
+         ====
+
+         .Code Examples
+         ****
+         Good: `src/good_example.py:10-20`
+         Bad: `old/deprecated.py:5-15`
+         ****
+         ```
+
+      3. **Unwritten Rules:**
+         Extract team conventions NOT in code:
+         - Naming conventions beyond linters
+         - When to write tests
+         - Code review expectations
+         - Deployment timing
+
+         Search: commit messages, PR comments, team docs
+
+      4. **Failed Experiments:**
+         ```asciidoc
+         == Failed Experiments
+
+         === We Tried: [Approach X]
+         *When:* [timeframe/commit]
+         *Why:* [rationale for trying]
+         *Result:* [what went wrong]
+         *Learning:* [why it failed, what we do now]
+
+         [NOTE]
+         ====
+         This is why rule Y exists in our workflow.
+         ====
+         ```
+
+      5. **Cross-Cutting Concerns:**
+         Document patterns for:
+         - Error handling
+         - Logging
+         - Security
+         - Performance
+         - Testing
+
+         Show actual code patterns with inline diagrams.
+
+      **Building Blocks (05-building-blocks.adoc):**
+      Create C4 Component diagrams for each major component.
+
+      ```asciidoc
+      [plantuml, components-l1, svg]
+      ----
+      !include <C4/C4_Component>
+      Container_Boundary(sys, "System") {
+        Component(comp1, "Component 1", "Tech", "Description")
+      }
+      ----
+
+      For each component:
+      - Role & Responsibility
+      - Key Constraints
+      - Dependencies (with rationale)
+      ```
+
+      **PARALLEL:** Continue open-questions.adoc updates.
+
+      **Output:** Mental model fully documented, ready for LLM consumption.
+
+    transitions:
+      - trigger: 'concepts_documented'
+        to: 'build_knowledge_graph'
+        transition_reason: 'Mental model complete, building LLM structures'
+      - trigger: 'need_concept_refinement'
+        to: 'extract_concepts'
+        transition_reason: 'Concept refinement needed'
+        additional_instructions: 'Review concept clarity, add more examples'
+
+  build_knowledge_graph:
+    description: 'Build LLM-optimized knowledge structures'
+    default_instructions: |
+      Create machine-readable knowledge for LLM consumption:
+
+      1. **LLM Knowledge Graph (llm/knowledge-graph.adoc):**
+         ```asciidoc
+         = Knowledge Graph
+
+         [source,yaml]
+         ----
+         concepts:
+           - name: Authentication Flow
+             level: 1  # 0=Fundamental, 1=Architecture, 2=Implementation
+             priority: CRITICAL
+             prerequisites:
+               - HTTP Protocol
+               - JWT Basics
+             enables:
+               - Authorization
+               - User Management
+             learning_time: "2-3 hours"
+             common_mistakes:
+               - mistake: "Storing tokens in localStorage"
+                 why: "XSS vulnerability"
+                 correct: "Use httpOnly cookies"
+             validation: "Can you explain why we use refresh tokens?"
+             code_locations:
+               - "src/auth/jwt.py:10-50"
+               - "tests/test_auth.py:20-80"
+
+           - name: [Next Concept]
+             ...
+         ----
+         ```
+
+      2. **Antipatterns (llm/antipatterns.adoc):**
+         Document what NOT to do:
+         ```asciidoc
+         = Antipatterns
+
+         == ❌ Antipattern: Direct Database Access from Controllers
+
+         === Why Wrong
+         Violates separation of concerns, makes testing hard.
+
+         === ✅ Correct Approach
+         Use repository pattern for data access.
+
+         === Code Example
+         [cols="1,1"]
+         |===
+         | ❌ Wrong | ✅ Correct
+
+         a|
+         [source,python]
+         ----
+         # controller.py
+         def get_user(id):
+             conn = db.connect()
+             return conn.query(...)
+         ----
+
+         a|
+         [source,python]
+         ----
+         # controller.py
+         def get_user(id):
+             return user_repo.find(id)
+         ----
+         |===
+
+         === Related
+         - ADR-003: Repository Pattern
+         - Concept: Separation of Concerns
+         ```
+
+      3. **Cross-Reference Everything:**
+         Ensure all documents link to:
+         - Related ADRs
+         - Code locations
+         - Other concepts
+         - Onboarding sections
+
+      **Output:** LLM-ready knowledge structures complete.
+
+    transitions:
+      - trigger: 'knowledge_graph_complete'
+        to: 'create_onboarding'
+        transition_reason: 'LLM structures ready, building human onboarding'
+
+  create_onboarding:
+    description: 'Build human-centric onboarding documentation'
+    default_instructions: |
+      Create the learning journey for new senior developers:
+
+      1. **Journey Map (onboarding/journey-map.adoc):**
+         ```asciidoc
+         = Onboarding Journey
+
+         == Week 1: System Overview
+
+         === Goals
+         - Understand system purpose and quality goals
+         - Know system boundaries
+         - Grasp core metaphor
+
+         === Activities
+         1. Read: 01-introduction.adoc
+         2. Study: System context diagram (03-context.adoc)
+         3. Review: Top 5 ADRs (09-decisions/README.adoc)
+
+         === Validation Questions
+         [qanda]
+         What are our top 3 quality goals and why?::
+         Expected: [Brief answer showing understanding]
+
+         Which external systems do we integrate with?::
+         Expected: [List with interfaces]
+
+         What is our core architectural metaphor?::
+         Expected: [Explanation of metaphor]
+
+         == Week 2: Fundamental Concepts
+         [Continue pattern for weeks 2-4]
+         ```
+
+      2. **Development Workflow (onboarding/development-workflow.adoc):**
+         ```asciidoc
+         = Development Workflow
+
+         == Feature Lifecycle
+
+         [plantuml, feature-lifecycle, svg]
+         ----
+         @startuml
+         start
+         :Receive Requirement;
+         :Design Solution;
+         if (Major Decision?) then (yes)
+           :Write ADR;
+         endif
+         :Implement;
+         :Write Tests;
+         :Code Review;
+         :Deploy to Staging;
+         :Deploy to Production;
+         stop
+         @enduml
+         ----
+
+         == When to Write ADRs
+         Create an ADR when:
+         - [ ] Decision affects quality goals
+         - [ ] Multiple alternatives exist
+         - [ ] Choice has long-term impact
+         - [ ] Team needs alignment
+
+         == Review Checklist
+         Before submitting PR:
+         - [ ] Tests pass
+         - [ ] Follows unwritten rules (see 08-concepts.adoc)
+         - [ ] No antipatterns (see llm/antipatterns.adoc)
+         - [ ] Documentation updated if needed
+         ```
+
+      3. **Team Structure (onboarding/team-structure.adoc):**
+         ```asciidoc
+         = Team Structure
+
+         == Knowledge Map
+         [cols="2,3,2"]
+         |===
+         | Area | Expert | Backup
+
+         | Authentication | [Name/Role] | [Name/Role]
+         | Database | [Name/Role] | [Name/Role]
+         | Frontend | [Name/Role] | [Name/Role]
+         |===
+
+         [NOTE]
+         ====
+         *ANNAHME:* Team structure assumed from git blame analysis.
+         *Zu klären mit:* Team Lead
+         ====
+
+         == Decision Processes
+         === Architecture Decisions
+         1. Discuss in architecture meeting
+         2. Create ADR draft
+         3. Review with team
+         4. Update ADR with decision
+
+         === Code Changes
+         [Process description]
+         ```
+
+      4. **Common Issues (onboarding/common-issues.adoc):**
+         ```asciidoc
+         = Common Issues & Troubleshooting
+
+         == Pattern: [Issue Name]
+
+         === Symptom
+         [What the developer sees]
+
+         === Common Cause
+         [Why it happens]
+
+         === Debugging Steps
+         1. Check: [specific location]
+         2. Verify: [configuration]
+         3. Test: [hypothesis]
+
+         === Prevention
+         [How to avoid in future]
+
+         .Related
+         ****
+         * ADR-005: [Related decision]
+         * Concept: [Related concept in 08-concepts.adoc]
+         ****
+         ```
+
+      **Output:** Complete onboarding path ready.
+
+    transitions:
+      - trigger: 'onboarding_complete'
+        to: 'review_quality'
+        transition_reason: 'Documentation complete, quality review needed'
+
+  review_quality:
+    description: 'Validate documentation against quality criteria'
+    default_instructions: |
+      Perform comprehensive quality check:
+
+      ## Quality Checklist
+
+      ### ✅ Comprehensiveness
+      - [ ] Can a senior developer understand design decisions?
+      - [ ] Is the WHY documented, not just WHAT?
+      - [ ] Are implicit knowledge and tribal wisdom captured?
+      - [ ] Are failed experiments documented with learnings?
+
+      ### ✅ Traceability
+      - [ ] Every claim has a Fundstelle (code reference)?
+      - [ ] All assumptions clearly marked with [NOTE] boxes?
+      - [ ] All decisions linked to quality goals?
+      - [ ] Cross-references complete (ADR ↔ concepts ↔ code)?
+
+      ### ✅ Structure
+      - [ ] Master document (arc42.adoc) includes all chapters?
+      - [ ] Diagrams render correctly (C4, PlantUML)?
+      - [ ] AsciiDoc syntax correct?
+      - [ ] Follows docToolchain conventions?
+
+      ### ✅ Completeness
+      - [ ] TOP 3 quality goals documented?
+      - [ ] TOP 5 architecture decisions with ADRs?
+      - [ ] 3-5 core concepts explained?
+      - [ ] Mental model map clear?
+      - [ ] LLM knowledge graph complete?
+      - [ ] 4-week onboarding path defined?
+
+      ### ✅ Open Questions
+      - [ ] All open questions categorized?
+      - [ ] Each with context, impact, and stakeholder?
+      - [ ] Assumptions made where needed?
+      - [ ] Marked for follow-up?
+
+      ### ✅ Validation
+      - [ ] Each week has validation questions?
+      - [ ] Troubleshooting patterns comprehensive?
+      - [ ] Antipatterns documented with correct approach?
+
+      ## Review Actions
+
+      1. **Test Diagrams:**
+         Verify all inline diagrams render via kroki.io
+
+      2. **Check Links:**
+         Verify all file references exist
+
+      3. **Review open-questions.adoc:**
+         Consolidate and prioritize questions
+
+      4. **Generate HTML:**
+         Test docToolchain build:
+         ```bash
+         ./dtcw generateHTML
+         ```
+
+      5. **Final Polish:**
+         - Fix formatting issues
+         - Improve clarity where needed
+         - Add missing cross-references
+
+      **Output:** Quality report with recommendations.
+
+    transitions:
+      - trigger: 'quality_check_passed'
+        to: 'consolidate_questions'
+        transition_reason: 'Documentation meets quality standards'
+      - trigger: 'needs_refinement'
+        to: 'extract_architecture'
+        additional_instructions: 'Address quality issues, focus on [specific area]'
+        transition_reason: 'Quality gaps identified in architecture'
+      - trigger: 'needs_concept_work'
+        to: 'extract_concepts'
+        additional_instructions: 'Improve mental model clarity, add examples'
+        transition_reason: 'Concepts need more detail'
+
+  consolidate_questions:
+    description: 'Finalize open questions for team follow-up'
+    default_instructions: |
+      Prepare open questions for team resolution:
+
+      1. **Review open-questions.adoc:**
+         - Group by category (Architecture, Concepts, Implementation, Process)
+         - Prioritize by impact (CRITICAL, HIGH, MEDIUM, LOW)
+         - Add context for each question
+
+      2. **Create Question Summary:**
+         ```asciidoc
+         = Offene Fragen - Zusammenfassung
+
+         == Kritische Fragen (Team Discussion Required)
+         [cols="1,3,2,2"]
+         |===
+         | ID | Frage | Impact | Stakeholder
+
+         | Q-001 | Why was Framework X chosen? | Can't evaluate alternatives | Lead Architect
+         | Q-002 | What is deployment frequency? | Affects CI/CD design | DevOps Lead
+         |===
+
+         == Mittlere Priorität (Nice to Have)
+         [Continue pattern]
+
+         == Annahmen zur Überprüfung
+         List all assumptions made that need validation.
+         ```
+
+      3. **Link Questions to Docs:**
+         Add references in relevant sections:
+         ```asciidoc
+         [WARNING]
+         ====
+         Offene Frage Q-003: Siehe open-questions.adoc
+         ====
+         ```
+
+      4. **Create Follow-up Plan:**
+         Document in open-questions.adoc:
+         - Who to ask each question
+         - When to follow up
+         - How to integrate answers
+
+      **Output:** Prioritized question list ready for team.
+
+    transitions:
+      - trigger: 'questions_consolidated'
+        to: 'finalize'
+        transition_reason: 'Ready for final delivery'
+
+  finalize:
+    description: 'Final preparation and delivery'
+    default_instructions: |
+      Prepare final deliverables:
+
+      1. **Generate Documentation:**
+         ```bash
+         ./dtcw generateHTML
+         ./dtcw generatePDF
+         ```
+
+      2. **Create README.md:**
+         ```markdown
+         # [Project] Architecture Documentation
+
+         This documentation follows the arc42 template and Peter Naur's
+         "Programming as Theory Building" principles.
+
+         ## Quick Start
+         - New team members: Start with `onboarding/journey-map.adoc`
+         - Architecture overview: Read `arc42/01-introduction.adoc`
+         - Key decisions: See `arc42/09-decisions/README.adoc`
+         - For LLMs: Check `llm/knowledge-graph.adoc`
+
+         ## Open Questions
+         See `open-questions.adoc` for items needing team input.
+
+         ## Build Documentation
+         ```bash
+         ./dtcw generateHTML
+         ```
+
+         ## Structure
+         ```
+         src/docs/
+         ├── arc42.adoc           # Master document
+         ├── arc42/               # Architecture documentation
+         ├── onboarding/          # Learning path
+         ├── llm/                 # Machine-readable knowledge
+         └── open-questions.adoc  # Follow-up items
+         ```
+         ```
+
+      3. **Document Next Steps:**
+         Create NEXT_STEPS.md:
+         - Schedule team review sessions
+         - Plan question resolution meetings
+         - Set up documentation maintenance
+
+      4. **Archive Working Files:**
+         Clean up temporary analysis files.
+
+      **Output:** Complete documentation package delivered.
+
+    transitions:
+      - trigger: 'documentation_complete'
+        to: 'initialize'
+        transition_reason: 'Project complete, ready for new documentation task'
