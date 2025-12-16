@@ -34,20 +34,16 @@ states:
          chmod +x dtcw
          ./dtcw init
          ```
-         
-      2. **Create Directory Structure:**
+
+      2. **Set Up arc42:**
+         Check if arc42 template is present, if not run:
+         ```bash
+         .dtcw downloadTemplate
+         ```
+
+      3. **Create Directory Structure:**
          ```
          src/docs/
-           - arc42.adoc              (Master document)
-           - arc42/
-             - 01-introduction.adoc
-             - 03-context.adoc
-             - 04-solution-strategy.adoc
-             - 05-building-blocks.adoc
-             - 08-concepts.adoc
-             - 09-decisions/
-               - README.adoc
-             - 11-risks.adoc
            - onboarding/
              - journey-map.adoc
              - development-workflow.adoc
@@ -59,26 +55,29 @@ states:
            - open-questions.adoc
          ```
 
-      3. **Initialize open-questions.adoc:**
+      4. **Initialize open-questions.adoc:**
          Create with AsciiDoc structure for tracking unknowns.
 
-      4. **Scan Repository:**
+      5. **Scan Repository:**
          - Identify main technologies (languages, frameworks)
          - Find existing documentation
          - Locate configuration files
          - Map directory structure
 
-      **CRITICAL:** Start documenting open questions immediately.
+      **CRITICAL:** Start documenting open questions immediately and whenever you find uncertainties (after reading each file).
       Use this format:
       ```asciidoc
       [qanda]
       Question?::
-      *Kontext:* Why this matters +
+      *Context:* Why this matters +
       *Impact:* What's blocked +
-      *Fundstelle:* file:line +
-      *Zu klären mit:* Role +
-      *Annahme:* Current assumption
+      *Reference:* file:line +
+      *Whom to ask:* Role +
+      *Assumption:* Current assumption +
+      *Answer:* [To be filled later]
       ```
+      and write down every uncertainty to open-questions.adoc .
+      if you find an answer to one of those questions later, update the document accordingly.
 
       **Output:** Initial structure created, repository overview documented.
 
