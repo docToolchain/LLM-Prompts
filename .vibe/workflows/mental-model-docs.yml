@@ -38,7 +38,7 @@ states:
       2. **Set Up arc42:**
          Check if arc42 template is present, if not run:
          ```bash
-         .dtcw downloadTemplate
+         ./dtcw downloadTemplate
          ```
 
       3. **Create Directory Structure:**
